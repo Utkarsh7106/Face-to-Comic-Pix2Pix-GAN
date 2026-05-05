@@ -10,8 +10,7 @@ This project presents a deep learning-based system that transforms real human fa
 ---
 
 ## 🧠 Author
-- Tanesh Gujar
-- Prerit Patil
+- Utkarsh Mishra
 
 ---
 
@@ -26,15 +25,15 @@ This project presents a deep learning-based system that transforms real human fa
 
 ## 📚 Table of Contents
 
-- [Introduction](#introduction)
-- [Related Work](#related-work)
-- [Dataset](#dataset)
-- [Methodology](#methodology)
-- [Implementation Details](#implementation-details)
-- [Results](#results)
-- [Web Application](#streamlit-web-application)
-- [Conclusion](#conclusion)
-- [References](#references)
+- [Introduction](#-introduction)
+- [Related Work](#-related-work)
+- [Dataset](#-dataset-face2comic)
+- [Methodology](#-methodology)
+- [Implementation Details](#-implementation-details)
+- [Results](#-results)
+- [Web Application](#-streamlit-web-application)
+- [Conclusion](#-conclusion)
+- [References](#-references)
 
 ---
 
@@ -79,11 +78,16 @@ Diverse in terms of age, lighting, expressions, and pose.
 ### Loss Functions
 
 - **Adversarial Loss**:
-L_GAN(G,D) = E_x,y[log D(x, y)] + E_x[log(1 - D(x, G(x)))]
+
+$$L_{GAN}(G,D) = \mathbb{E}_{x,y}[\log D(x, y)] + \mathbb{E}_x[\log(1 - D(x, G(x)))]$$
+
 - **L1 Reconstruction Loss**:
-L_L1(G) = E_x,y[||y - G(x)||₁]
+
+$$L_{L1}(G) = \mathbb{E}_{x,y}[||y - G(x)||_1]$$
+
 - **Final Objective**:
-G* = arg min_G max_D L_GAN(G,D) + λ * L_L1(G)
+
+$$G^* = \arg\min_G \max_D \ L_{GAN}(G,D) + \lambda \cdot L_{L1}(G)$$
 
 where `λ = 100`
 
@@ -91,28 +95,29 @@ where `λ = 100`
 
 ## 🧪 Implementation Details
 
-| Parameter        | Value              |
-|------------------|--------------------|
-| Framework        | PyTorch            |
-| Epochs           | 100                |
-| Batch Size       | 4                  |
-| Optimizer        | Adam (β1=0.5, β2=0.999) |
-| Learning Rate    | 2e-4               |
-| Image Size       | 256×256            |
-| Model Saving     | Best checkpoints saved |
+| Parameter     | Value                    |
+|---------------|--------------------------|
+| Framework     | PyTorch                  |
+| Epochs        | 100                      |
+| Batch Size    | 4                        |
+| Optimizer     | Adam (β1=0.5, β2=0.999)  |
+| Learning Rate | 2e-4                     |
+| Image Size    | 256×256                  |
+| Model Saving  | Best checkpoints saved   |
 
 ---
 
 ## 📈 Results
-<img src="outputs/output1.png"/>
-<img src="outputs/output2.png"/>
-<img src="outputs/output3.png"/>
 
----
-- **Success**:
+<img src="outputs/output1.png" width="600"/>
+<img src="outputs/output2.png" width="600"/>
+<img src="outputs/output3.png" width="600"/>
+
+**Success:**
 - High-quality comic faces for well-lit and clear input images
 - Preservation of identity and facial structure
-- **Challenges**:
+
+**Challenges:**
 - Artifacts in occluded faces or strong shadows
 - Occasionally loses fine details (e.g., glasses)
 
@@ -122,21 +127,21 @@ where `λ = 100`
 
 A user-friendly web interface to try the model in real-time.
 
-### Features:
-
-- Upload real face image
+**Features:**
+- Upload a real face image
 - Model converts it to comic style
-- Output is displayed in real-time
+- Output displayed in real-time
 
-To run:
+To run locally:
 ```bash
 streamlit run app.py
 ```
-App is live @[Comic Face app](https://comicface.streamlit.app/)
+
+---
 
 ## ✅ Conclusion
 
-We built and deployed a Pix2Pix-based system that learns to translate real human faces into artistic comic versions. The model preserves both the content and artistic style and demonstrates the power of GANs for creative applications.
+A Pix2Pix-based system was built and deployed that learns to translate real human faces into artistic comic versions. The model preserves both content and artistic style, demonstrating the power of GANs for creative applications.
 
 ---
 
